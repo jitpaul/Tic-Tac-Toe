@@ -1,0 +1,41 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+			"dependsOn": [
+				"Create Make",
+				"Run Make"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+			"problemMatcher": "$gcc"
+        },
+        {
+            "label": "Create Make",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "command": "cmake",
+            "args": [
+                "-G",
+                "\"Unix Makefiles\"",
+                "-DCMAKE_BUILD_TYPE=Debug",
+                "..",
+            ],
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "Run Make",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "command": "make",
+            "problemMatcher": "$gcc"
+        }
+    ]
+}
